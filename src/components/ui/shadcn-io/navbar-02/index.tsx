@@ -211,14 +211,14 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
       <header
         ref={combinedRef}
         className={cn(
-          "sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 md:px-6 [&_*]:no-underline",
+          "sticky top-0 z-50 w-full bg-transparent border-b lg:py-2 supports-[backdrop-filter]:bg-background/60 px-4 md:px-6 [&_*]:no-underline",
           className
         )}
         {...props}
       >
         <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between gap-4">
           {/* Left side */}
-          <div className="flex items-center w-full gap-2">
+          <div className="flex items-center w-full gap-2 px-2">
             {/* Mobile menu trigger */}
             {isMobile && (
               <Popover>
@@ -280,6 +280,23 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
                             )}
                         </NavigationMenuItem>
                       ))}
+                      <div
+                        role="separator"
+                        aria-orientation="horizontal"
+                        className="bg-border -mx-1 my-1 h-px w-full"
+                      />
+                      <div className="p-2">
+                        <Button
+                          size="sm"
+                          className="w-full text-sm font-medium px-4 h-9 rounded-md shadow-sm"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            if (onCtaClick) onCtaClick();
+                          }}
+                        >
+                          {ctaText}
+                        </Button>
+                      </div>
                     </NavigationMenuList>
                   </NavigationMenu>
                 </PopoverContent>
@@ -292,8 +309,8 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
                 className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
               >
                 <div className="text-2xl">{logo}</div>
-                <span className="highrise font-bold text-xl sm:inline-block">
-                  Com-rade
+                <span className="highrise text-xl tracking-wide sm:inline-block">
+                  Comrade
                 </span>
               </button>
               {/* Navigation menu */}
@@ -398,16 +415,18 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
                   </NavigationMenuList>
                 </NavigationMenu>
               )}
-              <Button
-                size="sm"
-                className="text-sm font-medium px-4 h-9 rounded-md shadow-sm"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (onCtaClick) onCtaClick();
-                }}
-              >
-                {ctaText}
-              </Button>
+              {!isMobile && (
+                <Button
+                  size="sm"
+                  className="text-sm font-medium px-4 h-9 rounded-md shadow-sm"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onCtaClick) onCtaClick();
+                  }}
+                >
+                  {ctaText}
+                </Button>
+              )}
             </div>
           </div>
           {/* Right side */}

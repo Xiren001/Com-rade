@@ -26,7 +26,7 @@ const Footer2 = ({
   logo = {
     src: "https://shadcnblocks.com/images/block/block-1.svg",
     alt: "Com-rade",
-    title: "Com-rade",
+    title: "Comrade",
     url: "https://www.shadcnblocks.com",
   },
   tagline = "Built with Zero Trust.",
@@ -72,11 +72,11 @@ const Footer2 = ({
 }: Footer2Props) => {
   return (
     <section className="relative w-full">
-      <div className="w-full m-auto py-16">
+      <div className="w-full m-auto pt-16 pb-4">
         <footer>
           <div className="container m-auto px-4 grid grid-cols-2 gap-8 lg:grid-cols-4 sm:grid-cols-4">
             <div className="col-span-2 mb-8 lg:mb-0 sm:col-span-4 ">
-              <div className="flex gap-2 lg:justify-start">
+              <div className="flex gap-2 justify-start sm:!justify-center md:!justify-center lg:!justify-center xl:!justify-center 2xl:!justify-center">
                 <a href="https://shadcnblocks.com">
                   <img
                     src={logo.src}
@@ -85,18 +85,21 @@ const Footer2 = ({
                     className="h-10"
                   />
                 </a>
-                <p className="highrise text-xl font-semibold">{logo.title}</p>
               </div>
-              <p className="mt-4 font-bold">{tagline}</p>
+              <p className="mt-4 font-bold text-left sm:!text-center md:!text-center lg:!text-center xl:!text-center 2xl:!text-center">
+                {tagline}
+              </p>
             </div>
             {menuItems.map((section, sectionIdx) => (
               <div key={sectionIdx}>
-                <h3 className="mb-4 font-bold">{section.title}</h3>
+                <h3 className="mb-4 text-left sm:!text-center md:!text-center lg:!text-center xl:!text-center 2xl:!text-center font-bold">
+                  {section.title}
+                </h3>
                 <ul className="space-y-4 text-muted-foreground">
                   {section.links.map((link, linkIdx) => (
                     <li
                       key={linkIdx}
-                      className="font-medium hover:text-primary"
+                      className="font-medium text-left sm:!text-center md:!text-center lg:!text-center xl:!text-center 2xl:!text-center hover:text-primary"
                     >
                       <a href={link.url}>{link.text}</a>
                     </li>
@@ -105,7 +108,7 @@ const Footer2 = ({
               </div>
             ))}
           </div>
-          <div className="mt-24 flex flex-col items-center justify-between gap-4 border-t px-4 mx-auto pt-8 text-sm font-medium text-muted-foreground md:flex-row md:items-center">
+          <div className="mt-24 mb-8 flex flex-col items-center justify-between gap-4 border-t px-4 mx-auto pt-8 text-sm font-medium text-muted-foreground md:flex-row md:items-center">
             <p>{copyright}</p>
             <ul className="flex gap-4">
               {bottomLinks.map((link, linkIdx) => (

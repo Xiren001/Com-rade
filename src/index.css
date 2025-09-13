@@ -478,22 +478,22 @@ template {
 
 :root {
   --radius: 0.625rem;
-  --background: #0A090C;
+  --background: #0b0f14;
   --foreground: #F0EDEE;
-  --card: #07393C;
+  --card: #222d38;
   --card-foreground: #F0EDEE;
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: #07393C;
-  --primary-foreground: oklch(0.985 0 0);
+  --popover: #222d38;
+  --popover-foreground: #F0EDEE;
+  --primary: #0af395;
+  --primary-foreground: #0b0f14;
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --accent: #222d38;
+  --accent-foreground: #0af395;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
+  --border: #222d38;
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -568,3 +568,27 @@ template {
   font-size: 2.5rem;
   line-height: 1;
 }
+
+.d-mobile {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  scale: 1;
+  animation: slideUp 1.2s ease-out forwards;
+  opacity: 0;
+  animation-delay: 2s;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(800px) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1.2);
+    opacity: 1;
+  }
+}
+
+
+
