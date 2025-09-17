@@ -1,38 +1,20 @@
-import Spline from "@splinetool/react-spline";
-import { useEffect, useRef, useState } from "react";
-
 function Hero() {
-  const splineRef = useRef<any>(null);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const el = splineRef.current;
-    if (!el) return;
-
-    const handleLoad = () => {
-      setLoaded(true);
-    };
-
-    el.addEventListener("load", handleLoad);
-    return () => el.removeEventListener("load", handleLoad);
-  }, []);
   return (
-    <div className="relative w-full h-[100dvh] bg-transparent overflow-hidden flex justify-center items-center border-b">
+    <div className="relative w-full h-[95dvh] sm:h-[95dvh] md:h-[95dvh] lg:h-[85dvh] xl:h-[85dvh] 2xl:h-[85dvh] bg-transparent overflow-hidden flex justify-center items-center border-b">
       <h1
-        className="whitespace-nowrap bg-transparent m-0 
-             !text-[10rem] sm:!text-[20rem] lg:!text-[30rem] xl:!text-[40rem] 2xl:!text-[50rem] 
+        className="whitespace-nowrap bg-transparent m-0
+             !text-[24rem] sm:!text-[24rem] md:!text-[45rem] lg:!text-[30rem] xl:!text-[40rem] 2xl:!text-[50rem] 
              overflow-hidden uppercase highrise tracking-tight text-white 
-             font-extrabold drop-shadow-[4px_4px_0_#000000]"
+             font-extrabold drop-shadow-[2px_2px_0_#0af395]
+             flex !flex-col sm:!flex-col lg:!flex-row xl:!flex-row 2xl:!flex-row !leading-[.75] lg:!leading-[.82] xl:!leading-[.82] 2xl:!leading-[.82]"
       >
-        Comrade
+        <span className="!text-[27rem] !-mx-1 sm:!-m-1 md:!m-0 lg:!m-0 xl:!m-0 2xl:!m-0 sm:!text-[28rem] md:!text-[50rem] lg:!text-[30rem] xl:!text-[40rem] 2xl:!text-[50rem] ">
+          Com
+        </span>
+        <span className="!-mx-1 sm:!-m-1 md:!m-0 lg:!m-0 xl:!m-0 2xl:!m-0 ">
+          rade
+        </span>
       </h1>
-
-      <Spline
-        ref={splineRef}
-        className={`d-mobile ${loaded ? "animate-slideUp delay-[3000ms]" : ""}`}
-        events-target="local"
-        scene="https://prod.spline.design/81aMlP-8XiH6-fAW/scene.splinecode"
-      ></Spline>
     </div>
   );
 }

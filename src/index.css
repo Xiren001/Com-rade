@@ -9,6 +9,27 @@
 /* Document
  * ========================================================================== */
 
+ /* For Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 1px;         /* super thin width */
+  height: 1px;        /* for horizontal scroll */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444;   /* scrollbar color */
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* or #0b0f14 if you want visible track */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;         /* "auto" | "thin" */
+  scrollbar-color: #444 transparent; /* thumb | track */
+}
+
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in
@@ -19,6 +40,7 @@ html {
   line-height: 1.15; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
+  scroll-behavior: smooth;
 }
 
 /* Sections
@@ -572,8 +594,8 @@ template {
 .d-mobile {
   position: absolute;
   inset: 0;
+  top: -70px;
   width: 100%;
-  scale: 1;
   animation: slideUp 1.2s ease-out forwards;
   opacity: 0;
   animation-delay: 2s;

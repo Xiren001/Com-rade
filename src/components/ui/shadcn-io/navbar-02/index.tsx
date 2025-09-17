@@ -1,4 +1,5 @@
 "use client";
+
 import * as React from "react";
 import { useEffect, useState, useRef } from "react";
 import { BookOpenIcon, InfoIcon, LifeBuoyIcon } from "lucide-react";
@@ -50,6 +51,7 @@ const Logo = (props: React.SVGAttributes<SVGElement>) => {
     </svg>
   );
 };
+
 // Hamburger icon component
 const HamburgerIcon = ({
   className,
@@ -207,6 +209,7 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
       },
       [ref]
     );
+
     return (
       <header
         ref={combinedRef}
@@ -512,5 +515,6 @@ const ListItem = React.forwardRef<
     </NavigationMenuLink>
   );
 });
+
 ListItem.displayName = "ListItem";
 export { Logo, HamburgerIcon };
