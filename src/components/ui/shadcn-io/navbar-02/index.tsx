@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { BookOpenIcon, InfoIcon, LifeBuoyIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -110,26 +111,26 @@ export interface Navbar02Props extends React.HTMLAttributes<HTMLElement> {
 }
 // Default navigation links
 const defaultNavigationLinks: Navbar02NavItem[] = [
-  { href: "#", label: "Overview" },
+  { href: "/overview", label: "Overview" },
   {
     label: "Mission",
     submenu: true,
     type: "description",
     items: [
       {
-        href: "#components",
+        href: "/overview",
         label: "Overview",
         description:
-          "Comrade is a secure, cross-platform communication and GPS system designed for the Philippine Army’s internal coordination.",
+          "Comrade is a secure, cross-platform communication and GPS system designed for the Philippine Army's internal coordination.",
       },
       {
-        href: "#documentation",
+        href: "/objectives",
         label: "Objectives",
         description:
           "Real-time field coordination. Decentralized, resilient ops, Encrypted voice & data.",
       },
       {
-        href: "#templates",
+        href: "/users",
         label: "Users",
         description:
           "Infantry Units, Commanders, Support Teams, Dispatch/Control Center.",
@@ -141,10 +142,10 @@ const defaultNavigationLinks: Navbar02NavItem[] = [
     submenu: true,
     type: "simple",
     items: [
-      { href: "#product-a", label: "Frontend" },
-      { href: "#product-b", label: "Backend" },
-      { href: "#product-c", label: "Security" },
-      { href: "#product-d", label: "Infra" },
+      { href: "/frontend", label: "Frontend" },
+      { href: "/backend", label: "Backend" },
+      { href: "/security", label: "Security" },
+      { href: "/infra", label: "Infra" },
     ],
   },
   {
@@ -153,12 +154,12 @@ const defaultNavigationLinks: Navbar02NavItem[] = [
     type: "icon",
     items: [
       {
-        href: "#getting-started",
+        href: "/getting-started",
         label: "Getting Started",
         icon: "BookOpenIcon",
       },
-      { href: "#tutorials", label: "Tutorials", icon: "LifeBuoyIcon" },
-      { href: "#about-us", label: "About Us", icon: "InfoIcon" },
+      { href: "/tutorials", label: "Tutorials", icon: "LifeBuoyIcon" },
+      { href: "/about-us", label: "About Us", icon: "InfoIcon" },
     ],
   },
 ];
@@ -247,23 +248,23 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
                               <ul>
                                 {link.items?.map((item, itemIndex) => (
                                   <li key={itemIndex}>
-                                    <button
-                                      onClick={(e) => e.preventDefault()}
+                                    <Link
+                                      to={item.href}
                                       className="flex w-full items-center rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground cursor-pointer no-underline"
                                     >
                                       {item.label}
-                                    </button>
+                                    </Link>
                                   </li>
                                 ))}
                               </ul>
                             </>
                           ) : (
-                            <button
-                              onClick={(e) => e.preventDefault()}
+                            <Link
+                              to={link.href || "#"}
                               className="flex w-full items-center rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground cursor-pointer no-underline"
                             >
                               {link.label}
-                            </button>
+                            </Link>
                           )}
                           {/* Add separator between different types of items */}
                           {index < navigationLinks.length - 1 &&
@@ -307,15 +308,15 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
             )}
             {/* Main nav */}
             <div className="flex items-center justify-between w-full gap-6">
-              <button
-                onClick={(e) => e.preventDefault()}
+              <Link
+                to="/"
                 className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
               >
                 <div className="text-2xl">{logo}</div>
                 <span className="highrise text-xl tracking-wide sm:inline-block">
                   Comrade
                 </span>
-              </button>
+              </Link>
               {/* Navigation menu */}
               {!isMobile && (
                 <NavigationMenu className="flex">
@@ -333,25 +334,26 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
                                 <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                                   <div className="row-span-3">
                                     <NavigationMenuLink asChild>
-                                      <button
-                                        onClick={(e) => e.preventDefault()}
+                                      <Link
+                                        to="/overview"
                                         className="flex h-full w-full select-none flex-col justify-center items-center text-center rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md cursor-pointer"
                                       >
                                         <div className="mb-3 text-xl font-medium">
-                                          shadcn.io
+                                          Com-rade
                                         </div>
                                         <p className="text-sm leading-tight text-muted-foreground">
-                                          Beautifully designed components built
-                                          with Radix UI and Tailwind CSS.
+                                          Secure communication and GPS system
+                                          for the Philippine Army's internal
+                                          coordination.
                                         </p>
-                                      </button>
+                                      </Link>
                                     </NavigationMenuLink>
                                   </div>
                                   {link.items?.map((item, itemIndex) => (
                                     <ListItem
                                       key={itemIndex}
                                       title={item.label}
-                                      href={item.href}
+                                      to={item.href}
                                       type={link.type}
                                     >
                                       {item.description}
@@ -364,7 +366,7 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
                                     <ListItem
                                       key={itemIndex}
                                       title={item.label}
-                                      href={item.href}
+                                      to={item.href}
                                       type={link.type}
                                     >
                                       {item.description}
@@ -377,7 +379,7 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
                                     <ListItem
                                       key={itemIndex}
                                       title={item.label}
-                                      href={item.href}
+                                      to={item.href}
                                       icon={item.icon}
                                       type={link.type}
                                     >
@@ -391,7 +393,7 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
                                     <ListItem
                                       key={itemIndex}
                                       title={item.label}
-                                      href={item.href}
+                                      to={item.href}
                                       type={link.type}
                                     >
                                       {item.description}
@@ -402,15 +404,16 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
                             </NavigationMenuContent>
                           </>
                         ) : (
-                          <NavigationMenuLink
-                            href={link.href}
-                            className={cn(
-                              navigationMenuTriggerStyle(),
-                              "cursor-pointer"
-                            )}
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            {link.label}
+                          <NavigationMenuLink asChild>
+                            <Link
+                              to={link.href || "#"}
+                              className={cn(
+                                navigationMenuTriggerStyle(),
+                                "cursor-pointer"
+                              )}
+                            >
+                              {link.label}
+                            </Link>
                           </NavigationMenuLink>
                         )}
                       </NavigationMenuItem>
@@ -454,15 +457,14 @@ export const Navbar02 = React.forwardRef<HTMLElement, Navbar02Props>(
 Navbar02.displayName = "Navbar02";
 // ListItem component for navigation menu items
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & {
+  React.ElementRef<typeof Link>,
+  React.ComponentPropsWithoutRef<typeof Link> & {
     title: string;
-    href?: string;
     icon?: string;
     type?: "description" | "simple" | "icon";
     children?: React.ReactNode;
   }
->(({ className, title, children, icon, type, ...props }, ref) => {
+>(({ className, title, children, icon, type, to, ...props }, ref) => {
   const renderIconComponent = (iconName?: string) => {
     if (!iconName) return null;
     switch (iconName) {
@@ -478,9 +480,9 @@ const ListItem = React.forwardRef<
   };
   return (
     <NavigationMenuLink asChild>
-      <a
+      <Link
         ref={ref}
-        onClick={(e) => e.preventDefault()}
+        to={to || "#"}
         className={cn(
           "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground cursor-pointer",
           className
@@ -511,7 +513,7 @@ const ListItem = React.forwardRef<
             )}
           </>
         )}
-      </a>
+      </Link>
     </NavigationMenuLink>
   );
 });
