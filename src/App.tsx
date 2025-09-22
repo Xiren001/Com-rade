@@ -16,6 +16,7 @@ import AboutUs from "./LandingPage/pages/about-us.tsx";
 function App() {
   return (
     <div className="relative w-full">
+      <div className="absolute inset-0 w-full h-full border-x container mx-auto"></div>
       <Header />
       <Routes>
         <Route path="/" element={<Body />} />
